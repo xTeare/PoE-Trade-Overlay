@@ -1,0 +1,382 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C7144FAF-010B-497D-8241-C3D35B3F1E00}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PoE_Trade_Overlay</RootNamespace>
+    <AssemblyName>PoE-Trade-Overlay</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DiscordRPC, Version=1.0.115.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DiscordRichPresence.1.0.115\lib\net35\DiscordRPC.dll</HintPath>
+    </Reference>
+    <Reference Include="JacksonSoft.CustomTabControl">
+      <HintPath>..\..\..\..\Desktop\JacksonSoft.CustomTabControl.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.4.2.0\lib\net45\SharpDX.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct2D1, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.Direct2D1.4.2.0\lib\net45\SharpDX.Direct2D1.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.DXGI, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.DXGI.4.2.0\lib\net45\SharpDX.DXGI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChatHelper.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Controls\BetterPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ColoredLabel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ColoredLabel.Designer.cs">
+      <DependentUpon>ColoredLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Ctrl_AccInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Ctrl_AccInfo.Designer.cs">
+      <DependentUpon>Ctrl_AccInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Ctrl_ResultDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Ctrl_ResultDisplay.Designer.cs">
+      <DependentUpon>Ctrl_ResultDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CustomTooltip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CustomTooltip.Designer.cs">
+      <DependentUpon>CustomTooltip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ExpandCollapse.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ExpandCollapse.Designer.cs">
+      <DependentUpon>ExpandCollapse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Filter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Filter.Designer.cs">
+      <DependentUpon>Filter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Filter_Buyout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Filter_Buyout.Designer.cs">
+      <DependentUpon>Filter_Buyout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Filter_DropDown.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Filter_DropDown.Designer.cs">
+      <DependentUpon>Filter_DropDown.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Filter_Mods.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Filter_Mods.Designer.cs">
+      <DependentUpon>Filter_Mods.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Filter_ModSearch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Filter_ModSearch.Designer.cs">
+      <DependentUpon>Filter_ModSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Filter_Sockets.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Filter_Sockets.Designer.cs">
+      <DependentUpon>Filter_Sockets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Filter_Text.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Filter_Text.Designer.cs">
+      <DependentUpon>Filter_Text.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FlatTab.cs" />
+    <Compile Include="Controls\FlattenCombo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FlattenCombo.Designer.cs">
+      <DependentUpon>FlattenCombo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TabWithQuery.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Toggle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Toggle.Designer.cs">
+      <DependentUpon>Toggle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data.cs" />
+    <Compile Include="DiscordRichPresence.cs" />
+    <Compile Include="Event.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Search.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Search.Designer.cs">
+      <DependentUpon>Form_Search.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Settings.Designer.cs">
+      <DependentUpon>Form_Settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Startup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Startup.Designer.cs">
+      <DependentUpon>Form_Startup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GraphicExtensions.cs" />
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ninja.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\CurrencyRates.cs" />
+    <Compile Include="Queries\Data\CurrencyData.cs" />
+    <Compile Include="Queries\Items.cs" />
+    <Compile Include="Queries\Leagues.cs" />
+    <Compile Include="Queries\Listing.cs" />
+    <Compile Include="Queries\QueryHelper.cs" />
+    <Compile Include="Queries\QueryResults.cs" />
+    <Compile Include="Queries\Search.cs" />
+    <Compile Include="Queries\SearchResultManager.cs" />
+    <Compile Include="Queries\SearchResults.cs" />
+    <Compile Include="Queries\Stats.cs" />
+    <Compile Include="Send.cs" />
+    <Compile Include="Statistics.cs" />
+    <Compile Include="TextboxEvents.cs" />
+    <Compile Include="TradeData.cs" />
+    <Compile Include="Voting.cs" />
+    <EmbeddedResource Include="Controls\ColoredLabel.resx">
+      <DependentUpon>ColoredLabel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Ctrl_AccInfo.resx">
+      <DependentUpon>Ctrl_AccInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Ctrl_ResultDisplay.resx">
+      <DependentUpon>Ctrl_ResultDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ExpandCollapse.resx">
+      <DependentUpon>ExpandCollapse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Filter.resx">
+      <DependentUpon>Filter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Filter_Buyout.resx">
+      <DependentUpon>Filter_Buyout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Filter_DropDown.resx">
+      <DependentUpon>Filter_DropDown.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Filter_Mods.resx">
+      <DependentUpon>Filter_Mods.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Filter_ModSearch.resx">
+      <DependentUpon>Filter_ModSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Filter_Sockets.resx">
+      <DependentUpon>Filter_Sockets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Filter_Text.resx">
+      <DependentUpon>Filter_Text.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Toggle.resx">
+      <DependentUpon>Toggle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Search.resx">
+      <DependentUpon>Form_Search.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Settings.resx">
+      <DependentUpon>Form_Settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Startup.resx">
+      <DependentUpon>Form_Startup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="config.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Queries\Currency.cs" />
+    <None Include="Resources\move.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\mapSeries.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\rarity.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\socketspacing.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\types.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DefaultQuery.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\VeiledSuffix.png" />
+    <None Include="Resources\VeiledPrefix.png" />
+    <None Include="Resources\warlord-symbol.png" />
+    <None Include="Resources\shaper-symbol.png" />
+    <None Include="Resources\redeemer-symbol.png" />
+    <None Include="Resources\hunter-symbol.png" />
+    <None Include="Resources\elder-symbol.png" />
+    <None Include="Resources\crusader-symbol.png" />
+    <None Include="Resources\startup2.png" />
+    <None Include="Resources\chaos_bw.png" />
+    <None Include="Resources\chaos.png" />
+    <None Include="Resources\72-722963_circular-question-mark-button-question-mark-icon-white.png" />
+    <None Include="Resources\search.png" />
+    <None Include="Resources\1px.png" />
+    <None Include="Resources\wiki.png" />
+    <None Include="Resources\str.png" />
+    <None Include="Resources\link_Vertical.png" />
+    <None Include="Resources\link_horizontal.png" />
+    <None Include="Resources\ItemsSeparatorUnique.png" />
+    <None Include="Resources\ItemsSeparatorRare.png" />
+    <None Include="Resources\ItemsSeparatorProphecy.png" />
+    <None Include="Resources\ItemsSeparatorMagic.png" />
+    <None Include="Resources\ItemsSeparatorGem.png" />
+    <None Include="Resources\ItemsSeparatorFoil.png" />
+    <None Include="Resources\ItemsSeparatorCurrency.png" />
+    <None Include="Resources\ItemsHeaderWhiteRight.png" />
+    <None Include="Resources\ItemsHeaderWhiteMiddle.png" />
+    <None Include="Resources\ItemsHeaderWhiteLeft.png" />
+    <None Include="Resources\ItemsHeaderUniqueRight.png" />
+    <None Include="Resources\ItemsHeaderUniqueMiddle.png" />
+    <None Include="Resources\ItemsHeaderUniqueLeft.png" />
+    <None Include="Resources\ItemsHeaderRareRight.png" />
+    <None Include="Resources\ItemsHeaderRareMiddle.png" />
+    <None Include="Resources\ItemsHeaderRareLeft.png" />
+    <None Include="Resources\ItemsHeaderProphecyRight.png" />
+    <None Include="Resources\ItemsHeaderProphecyMiddle.png" />
+    <None Include="Resources\ItemsHeaderProphecyLeft.png" />
+    <None Include="Resources\ItemsHeaderMagicRight.png" />
+    <None Include="Resources\ItemsHeaderMagicMiddle.png" />
+    <None Include="Resources\ItemsHeaderMagicLeft.png" />
+    <None Include="Resources\ItemsHeaderGemRight.png" />
+    <None Include="Resources\ItemsHeaderGemMiddle.png" />
+    <None Include="Resources\ItemsHeaderGemLeft.png" />
+    <None Include="Resources\ItemsHeaderFoilRight.png" />
+    <None Include="Resources\ItemsHeaderFoilMiddle.png" />
+    <None Include="Resources\ItemsHeaderFoilLeft.png" />
+    <None Include="Resources\ItemsHeaderCurrencyRight.png" />
+    <None Include="Resources\ItemsHeaderCurrencyMiddle.png" />
+    <None Include="Resources\ItemsHeaderCurrencyLeft.png" />
+    <None Include="Resources\ItemsExperienceFill.png" />
+    <None Include="Resources\ItemsExperienceBar.png" />
+    <None Include="Resources\int.png" />
+    <None Include="Resources\gen.png" />
+    <None Include="Resources\dex.png" />
+    <None Include="Resources\ItemsSeparatorWhite.png" />
+    <None Include="Resources\panel.png" />
+    <None Include="Resources\startup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\Images\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

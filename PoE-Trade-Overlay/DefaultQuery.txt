@@ -1,0 +1,1 @@
+﻿{"query":{"status":{"option":"any"},"stats":[{"type":"and","filters":[]}],"filters":{"trade_filters":{"filters":{"account":{"input":"xTeare"}}}}},"sort":{"price":"asc"}}

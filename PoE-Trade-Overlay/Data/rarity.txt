@@ -1,0 +1,7 @@
+﻿any|Any
+normal|Normal
+magic|Magic
+rare|Rare
+unique|Unique
+uniquefoil|Unique (Relic)
+nonunique|Any Non-Unique
